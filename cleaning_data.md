@@ -1,10 +1,13 @@
 **What issues will you address by cleaning the data?**
 
-**
-__*Creating new columns with updated data types and converting between data types to make it easily manageable.
--Finding relationships in diffrent table of databases, removing Nulls and converting to Zero for few columns, changing data types.
--Creating new cleaned table
--Add new columns__
+
+__*Creating new columns with updated data types and converting between data types to make it easily manageable.__
+
+__*Finding relationships in diffrent table of databases, removing Nulls and converting to Zero for few columns, changing data types.__
+
+__*Creating new cleaned table.__
+
+__*Add new columns.__
 
 
 
