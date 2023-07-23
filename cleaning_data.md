@@ -1,4 +1,4 @@
-**What issues will you address by cleaning the data?**
+## What issues will you address by cleaning the data?**
 
 
 __*Creating new columns with updated data types and converting between data types to make it easily manageable.__
@@ -11,10 +11,7 @@ __*Add new columns.__
 
 
 
-Queries:
-Below, provide the SQL queries you used to clean your data.
-
-*Finding relationships in diffrent table of databases, removing Nulls and converting to Zero for few columns, changing data types*
+## Finding relationships in diffrent table of databases, removing Nulls and converting to Zero for few columns, changing data types
 
 UPDATE all_sessions 
 SET timeonsite = COALESCE(timeonsite, '0')
@@ -62,7 +59,7 @@ WHERE fullvisitorid IN (
     GROUP BY fullvisitorid
     HAVING COUNT(*) > 1);
 
-*Creating new columns with updated data types and converting between data types to make it easily manageable.
+## Creating new columns with updated data types and converting between data types to make it easily manageable.
 
 
 UPDATE all_sessions 
@@ -90,13 +87,13 @@ ALTER TABLE all_sessions RENAME COLUMN productrevenue_new TO productrevenue;
 UPDATE all_sessions SET ecommerceactionoption = COALESCE (ecommerceactionoption, 'NA')
 
 
-*verifying if all went ok and data searchable
+## Verifying if all went ok and data searchable
 
 SELECT fullvisitorid FROM all_sessions GROUP BY fullvisitorid HAVING COUNT(*) > 1
 
 
 
-*Creating new cleaned table
+## Creating new cleaned table
 
 CREATE TABLE salesbysku AS 
 SELECT DISTINCT productsku, CAST(totalordered AS integer) AS totalordered
@@ -104,14 +101,14 @@ SELECT DISTINCT productsku, CAST(totalordered AS integer) AS totalordered
  WHERE productsku IS NOT NULL
     AND totalordered != 0
 
-*Probbing data further*
+## Probbing data further
 
 SELECT a.visitid, a.fullvisitorid
 FROM analytics a
 LEFT JOIN all_sessions s ON a.visitid = s.visitid
 WHERE s.visitid IS NULL
 
-*Creating new columns for different data types*
+## Creating new columns for different data types
 
 ALTER TABLE all_sessions DROP COLUMN fullvisitorid_tmp;
 
@@ -133,7 +130,7 @@ SELECT
   END AS revenue_in_millions
 FROM all_sessions;
 
-*OR with a new column*
+## Add a new column
 
 ALTER TABLE all_sessions
 ADD COLUMN transactionrevenueinmillions INTEGER;
