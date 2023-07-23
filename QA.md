@@ -49,7 +49,7 @@ SELECT column_name
 FROM information_schema.columns
 WHERE table_name = 'sales_report';
 
-## Checking zeros for any columns
+## Checking zeros for any columns and counting them
 
 SELECT 
     (SELECT COUNT(*) FROM sales_report WHERE "ratio" = 0) AS ratio_zeros,
@@ -102,3 +102,43 @@ SELECT
     (SELECT COUNT(*) FROM sales_report WHERE "restockingleadtime" = 0) AS restockingleadtime_zeros,
     (SELECT COUNT(*) FROM sales_report WHERE "name" = '0') AS name_zeros,
     (SELECT COUNT(*) FROM sales_report WHERE "productsku" = '0') AS productsku_zeros;
+
+
+## Checking duplicates and if any selecting distinct
+
+
+SELECT productsku, COUNT(*) AS duplicate_count
+FROM sales_report
+GROUP BY productsku
+HAVING COUNT(*) > 1;
+
+SELECT productsku, COUNT(*) AS duplicate_count
+FROM sales_by_sku
+GROUP BY productsku
+HAVING COUNT(*) > 1;
+
+SELECT productsku, COUNT(*) AS duplicate_count
+FROM products
+GROUP BY productsku
+HAVING COUNT(*) > 1;
+
+SELECT fullvisitorid, COUNT(*) AS duplicate_count
+FROM analytics
+GROUP BY fullvisitorid
+HAVING COUNT(*) > 1;
+
+SELECT fullvisitorid, COUNT(*) AS duplicate_count
+FROM all_sessions
+GROUP BY fullvisitorid
+HAVING COUNT(*) > 1;
+
+
+SELECT DISTINCT fullvisitorid FROM all_sessions
+
+SELECT DISTINCT fullvisitorid FROM analytics
+
+SELECT DISTINCT productsku FROM products
+
+SELECT DISTINCT productsku FROM sales_by_sku
+
+SELECT DISTINCT productsku FROM sales_report
