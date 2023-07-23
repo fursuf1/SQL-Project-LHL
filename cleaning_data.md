@@ -1,15 +1,17 @@
-*What issues will you address by cleaning the data?*
-*Creating new columns with updated data types and converting between data types to make it easily manageable.*
-*Finding relationships in diffrent table of databases, removing Nulls and converting to Zero for few columns, changing data types.*
-*Creating new cleaned table*
-*Add new columns*
+**What issues will you address by cleaning the data?**
+
+**
+-Creating new columns with updated data types and converting between data types to make it easily manageable.
+-Finding relationships in diffrent table of databases, removing Nulls and converting to Zero for few columns, changing data types.
+-Creating new cleaned table
+-Add new columns**
 
 
 
 Queries:
 Below, provide the SQL queries you used to clean your data.
 
-*Finding relationships in diffrent table of databases, removing Nulls and converting to Zero for few columns, changing data types
+*Finding relationships in diffrent table of databases, removing Nulls and converting to Zero for few columns, changing data types*
 
 UPDATE all_sessions 
 SET timeonsite = COALESCE(timeonsite, '0')
