@@ -4,7 +4,7 @@
 
 ## Risk area for Data Inconsistency with Nullable values
 
-'''
+```
 SELECT column_name, data_type, is_nullable
 FROM information_schema.columns
 WHERE table_name = 'all_sessions';
@@ -24,7 +24,7 @@ WHERE table_name = 'sales_by_sku';
 SELECT column_name, data_type, is_nullable
 FROM information_schema.columns
 WHERE table_name = 'sales_report';
-'''
+```
 
 ## Searching for columns in each table
 
