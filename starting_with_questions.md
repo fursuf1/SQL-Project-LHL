@@ -5,7 +5,7 @@ Answer the following questions and provide the SQL queries used to find the answ
 
 
 SQL Queries:
-
+```
 CREATE OR REPLACE VIEW highest_transaction_revenues_view AS
 WITH max_revenues AS (
     SELECT country, city, MAX(totaltransactionrevenue) AS highest_transaction_revenues
@@ -21,7 +21,7 @@ ORDER BY mr.highest_transaction_revenues DESC, al.country, al.city;
 SELECT DISTINCT *
 FROM highest_transaction_revenues_view
 ORDER BY highest_transaction_revenues DESC;
-
+```
 
 Answer:
 ![IQ1](https://github.com/fursuf1/SQL-Project-LHL/blob/88525671a2f3a511590182424c76937f41e5c6b7/Q1A.jpg)
@@ -33,7 +33,7 @@ Answer:
 
 
 SQL Queries:
-
+```
 CREATE OR REPLACE VIEW top_selling_products_avg_view AS
 SELECT al.country, al.city, ROUND(AVG(pr.orderedquantity), 5) AS avg_ordered_quantity
 FROM all_sessions AS al
@@ -45,21 +45,18 @@ GROUP BY al.country, al.city;
 
 SELECT * FROM top_selling_products_avg_view
 ORDER BY avg_ordered_quantity DESC;
-
+```
 
 
 Answer:
 ![Q2](https://github.com/fursuf1/SQL-Project-LHL/blob/88525671a2f3a511590182424c76937f41e5c6b7/Q2A.jpg)
 
 
-
-
-
 ## Question 3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?
 
 
 SQL Queries:
-
+```
 CREATE OR REPLACE VIEW top_selling_products_by_city_view AS
 SELECT  country, city, v2productname, v2productcategory
 FROM all_sessions 
@@ -67,7 +64,7 @@ WHERE city <> '(not set)' AND city <> '0'
 GROUP BY v2productcategory, country, city, v2productname
 
 SELECT * FROM top_selling_products_by_city_view;
-
+```
 
 Answer:
 ![Q3](https://github.com/fursuf1/SQL-Project-LHL/blob/88525671a2f3a511590182424c76937f41e5c6b7/Q3A.jpg)
@@ -79,7 +76,7 @@ Answer:
 
 
 SQL Queries:
-
+```
 CREATE OR REPLACE VIEW top_selling_products_view AS
 WITH top_products AS (
     SELECT  al.v2productname, al.country, al.city,
@@ -96,8 +93,7 @@ ORDER BY country, city, total_ordered_quantity DESC;
 SELECT * 
 FROM top_selling_products_view
 ORDER BY total_ordered_quantity DESC;
-
-
+```
 
 Answer:
 ![Q4](https://github.com/fursuf1/SQL-Project-LHL/blob/88525671a2f3a511590182424c76937f41e5c6b7/Q4A.jpg)
@@ -108,7 +104,7 @@ Answer:
 ## Question 5: Can we summarize the impact of revenue generated from each city/country?
 
 SQL Queries:
-
+```
 WITH regional_revenue_cte AS (
     SELECT
         al.country, al.city,
@@ -120,8 +116,7 @@ WITH regional_revenue_cte AS (
 SELECT country,city,  total_regional_revenue, fullvisitorid
 FROM regional_revenue_cte
 ORDER BY total_regional_revenue DESC NULLS LAST;
-
-
+```
 Answer:
 ![Q5](https://github.com/fursuf1/SQL-Project-LHL/blob/88525671a2f3a511590182424c76937f41e5c6b7/Q5A.jpg)
 
