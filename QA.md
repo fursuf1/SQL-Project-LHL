@@ -27,7 +27,7 @@ WHERE table_name = 'sales_report';
 ```
 
 ## Searching for columns in each table
-
+```
 SELECT column_name
 FROM information_schema.columns
 WHERE table_name = 'all_sessions';
@@ -40,7 +40,6 @@ SELECT column_name
 FROM information_schema.columns
 WHERE table_name = 'products';
 
-
 SELECT column_name
 FROM information_schema.columns
 WHERE table_name = 'salesbysku';
@@ -48,16 +47,15 @@ WHERE table_name = 'salesbysku';
 SELECT column_name
 FROM information_schema.columns
 WHERE table_name = 'sales_report';
-
+```
 ## Checking zeros for any columns and counting them
-
+```
 SELECT 
     (SELECT COUNT(*) FROM sales_report WHERE "ratio" = 0) AS ratio_zeros,
     (SELECT COUNT(*) FROM sales_report WHERE "totalordered" = 0) AS totalordered_zeros,
     (SELECT COUNT(*) FROM sales_report WHERE "sentimentscore" = 0) AS sentimentscore_zeros,
     (SELECT COUNT(*) FROM sales_report WHERE "sentimentmagnitude" = 0) AS sentimentmagnitude_zeros,
     (SELECT COUNT(*) FROM sales_report WHERE "stocklevel" = 0) AS stocklevel_zeros;
-
 
 
 SELECT 
@@ -102,11 +100,11 @@ SELECT
     (SELECT COUNT(*) FROM sales_report WHERE "restockingleadtime" = 0) AS restockingleadtime_zeros,
     (SELECT COUNT(*) FROM sales_report WHERE "name" = '0') AS name_zeros,
     (SELECT COUNT(*) FROM sales_report WHERE "productsku" = '0') AS productsku_zeros;
-
+```
 
 ## Checking duplicates and if any selecting distinct
 
-
+```
 SELECT productsku, COUNT(*) AS duplicate_count
 FROM sales_report
 GROUP BY productsku
@@ -132,7 +130,6 @@ FROM all_sessions
 GROUP BY fullvisitorid
 HAVING COUNT(*) > 1;
 
-
 SELECT DISTINCT fullvisitorid FROM all_sessions
 
 SELECT DISTINCT fullvisitorid FROM analytics
@@ -142,3 +139,4 @@ SELECT DISTINCT productsku FROM products
 SELECT DISTINCT productsku FROM sales_by_sku
 
 SELECT DISTINCT productsku FROM sales_report
+```
