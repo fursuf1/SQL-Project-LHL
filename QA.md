@@ -57,7 +57,6 @@ SELECT
     (SELECT COUNT(*) FROM sales_report WHERE "sentimentmagnitude" = 0) AS sentimentmagnitude_zeros,
     (SELECT COUNT(*) FROM sales_report WHERE "stocklevel" = 0) AS stocklevel_zeros;
 
-
 SELECT 
     (SELECT COUNT(*) FROM analytics WHERE "visitnumber" = 0) AS visitnumber_zeros,
     (SELECT COUNT(*) FROM analytics WHERE "visitid" = 0) AS visitid_zeros,
@@ -76,7 +75,6 @@ SELECT
     (SELECT COUNT(*) FROM analytics WHERE "socialengagementtype" = '0') AS socialengagementtype_zeros,
     (SELECT COUNT(*) FROM analytics WHERE "fullvisitoridtemp" = '0') AS fullvisitoridtemp_zeros;
 
-
 SELECT 
     (SELECT COUNT(*) FROM products WHERE "stocklevel" = 0) AS stocklevel_zeros,
     (SELECT COUNT(*) FROM products WHERE "sentimentscore" = 0) AS sentimentscore_zeros,
@@ -85,7 +83,6 @@ SELECT
     (SELECT COUNT(*) FROM products WHERE "restockingleadtime" = 0) AS restockingleadtime_zeros,
     (SELECT COUNT(*) FROM products WHERE "name" = '0') AS name_zeros,
     (SELECT COUNT(*) FROM products WHERE "productsku" = '0') AS productsku_zeros;
-
 
 SELECT 
     (SELECT COUNT(*) FROM salesbysku WHERE "totalordered" = 0) AS totalordered_zeros,
